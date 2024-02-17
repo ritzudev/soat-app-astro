@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import EmailForm from '../components/EmaiForm'
+import RimacLogo from '../components/logos/Rimac.astro'
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,32 +12,21 @@ import EmailForm from '../components/EmaiForm'
       <></>
       <img
         class="h-80 object-contain md:h-[80vh]"
-        src="/img/Imagenv3.png"
+        src="/img/Imagenv3.webp"
         alt=""
       />
       <footer
-        class="flex flex-wrap gap-6 md:flex-row w-full justify-evenly px-8"
+        class="flex flex-wrap gap-6 md:flex-row w-full justify-evenly px-8 items-center"
       >
-        <img
-          class="w-28"
-          src="https://www.pacifico.com.pe/image/layout_set_logo?img_id=99451400&t=1708135827470"
-          alt=""
-        />
-        <img
+        <img class="w-28" src="/img/pacifico.webp" alt="" />
+        <RimacLogo class="w-28" />
+        <!--         <img
           class="w-28"
           src="https://imagescdn.rimac.com/blt4974fa4add99eba2/634830fa19d8652169cf7760/vertical-rimac-rbr.svg"
           alt=""
-        />
-        <img
-          class="w-28"
-          src="https://www.mapfre.com.pe/media/logo-mapfre-2.png"
-          alt=""
-        />
-        <img
-          class="w-28"
-          src="https://www.lapositiva.com.pe/wps/wcm/connect/landing/0249961a-934a-4fa7-871b-3da3c8994602/logopos.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_NH4A1242M0JI80Q40U1PN238A2-0249961a-934a-4fa7-871b-3da3c8994602-novbPx6"
-          alt=""
-        />
+        /> -->
+        <img class="w-28" src="/img/mapfre.webp" alt="" />
+        <img class="w-28" src="/img/lapositiva.webp" alt="" />
       </footer>
     </section>
     <section class="flex-1 bg-[#212121] py-10 rounded-t-3xl md:rounded-none">
