@@ -31,8 +31,8 @@ export default function Home() {
           },
           body: JSON.stringify({
             from: 'onboarding@resend.dev',
-            //to: 'segurosgodtello@gmail.com',
-            to: 'lexzum10@gmail.com',
+            to: 'segurosgodtello@gmail.com',
+            //to: 'lexzum10@gmail.com',
             subject: 'Información SOAT',
             html: `<div>
           <p>Nombre: ${nombres} ${apellidos} </p>  
