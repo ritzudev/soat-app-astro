@@ -1,0 +1,134 @@
+---
+if (Astro.request.method === 'POST') {
+  /* const data = await Astro.request.formData();
+  console.log(data); */
+  /*   const path = 'https://kind-gold-agouti-tutu.cyclic.app/api/'
+  const response = await fetch(`${path}sendmail`, {
+    method: 'POST',
+    body: JSON.stringify({
+      asunto: `lexzum10@gmail.com - CONTACTAR SOAT`,
+      contenido: 'quiero que me llames'
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  })  */
+  // const data = await response.json()
+  // const randomUser = data.results[0]
+  //const data = await response.json()
+  //console.log(data)
+}
+---
+
+<div
+  class="px-2 md:px-10 max-w-2xl mx-auto flex flex-col justify-evenly h-full"
+>
+  <picture class="flex justify-center">
+    <img
+      class="h-32 sm:h-60 object-cover"
+      src="https://cloudfront-us-east-1.images.arcpublishing.com/elcomercio/AEY6AXJIE5G6DJKY264FVMN2FI.jpg"
+      alt=""
+    />
+  </picture>
+
+  <div class="flex gap-10 flex-col text-white">
+    <div class="container">
+      <label class="label">Nombres</label>
+      <input
+        required=""
+        type="text"
+        name="nombres"
+        placeholder="Nombres"
+        id="nombres"
+      />
+    </div>
+    <div class="container">
+      <label class="label">Apellidos</label>
+      <input
+        required=""
+        type="text"
+        name="apellidos"
+        placeholder="Apellidos"
+        id="apellidos"
+      />
+    </div>
+    <div class="container">
+      <label for="Celular">Celular</label>
+      <input
+        required=""
+        type="text"
+        name="celular"
+        placeholder="Celular"
+        id="celular"
+      />
+    </div>
+    <button
+      class="bg-[#9ad953] py-2 w-full rounded-md text-2xl font-medium text-black"
+      >Contactame</button
+    >
+  </div>
+</div>
+
+<!-- <script>
+  function capturarValor() {
+    // Obtener el valor del input
+    var inputName = document.getElementById('nombres')?.value?
+    // Mostrar el valor en la consola
+    console.log('El valor capturado es: ' + inputName)
+    // Puedes usar el valor como desees, por ejemplo, enviarlo a un servidor, procesarlo, etc.
+  }
+</script> -->
+
+<script>
+  //var inputName = (document.querySelector('#nombres') as HTMLInputElement).value
+
+  //console.log(inputName)
+  document.querySelector('button')
+    ?.addEventListener('click', async () => {
+      try {
+        const res = await fetch('/api/sendEmail.json', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'onboarding@resend.dev',
+            //to: 'segurosgodtello@gmail.com',
+            to: 'lexzum10@gmail.com',
+            subject: 'Información SOAT',
+            html: '<p>Hi</p>',
+            text: `hi`
+          })
+        })
+        const data = await res.json()
+        console.log(data)
+      } catch (error) {
+        console.error(error)
+      }
+    })
+</script>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  input {
+    border-radius: 6px;
+    padding: 12px;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    box-shadow: 0 0 0 0.1vw #aaa;
+    transition: all 300ms ease-in;
+  }
+
+  input:hover {
+    box-shadow: 0 0 0 0.1vw white;
+  }
+
+  input:focus {
+    box-shadow: 0 0 0 0.1vw #9ad953;
+  }
+</style>
