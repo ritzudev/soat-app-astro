@@ -59,6 +59,7 @@ export default function Home() {
         setNombres('')
         setApellidos('')
         setCelular('')
+        setPlaca('')
         setIsLoading(false)
       } else {
         console.error('Error al realizar la petición POST')
@@ -151,6 +152,13 @@ export default function Home() {
               <span className="radio-label">Llamada</span>
             </span>
           </label>
+          {/*           <button
+            type="submit"
+            className="text-sm w-full md:text-lg lg:text-xl button disabled:cursor-not-allowed"
+            disabled={isLoading}
+          >
+            Contactame
+          </button> */}
         </div>
       </div>
     )
@@ -202,7 +210,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-1 flex-col gap-10 sm:gap-4 items-center sm:flex-row">
+          <div className="flex flex-1 flex-col gap-10 sm:gap-6 items-center sm:flex-row">
             <div className="container flex-1">
               <label className=" label">Celular</label>
               <input
