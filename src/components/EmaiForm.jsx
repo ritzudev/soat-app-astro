@@ -5,12 +5,12 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function Home() {
   // Estados para los valores del formulario
-  const [nombres, setNombres] = useState('')
-  const [apellidos, setApellidos] = useState('')
+  const [nombre, setNombre] = useState('')
+  const [dni, setDni] = useState('')
   const [celular, setCelular] = useState('')
   const [placa, setPlaca] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const [selectedOption, setSelectedOption] = useState('1')
+  const [isLoading, setIsLoading] = useState(false)
 
   // Función para manejar el cambio de selección del radio button
   const handleOptionChange = (event) => {
@@ -35,14 +35,15 @@ export default function Home() {
             //to: 'lexzum10@gmail.com',
             subject: 'Información SOAT',
             html: `<div>
-          <p>Nombre: ${nombres} ${apellidos} </p>  
+          <p>Nombre: ${nombre}</p>  
           <p>Celular: ${celular}</p>
           <p>Placa: ${placa}</p>
+          <p>Dni: ${dni}</p>
           <p>Comunicarse mediante: ${
             selectedOption == 1 ? 'Whatsapp' : 'Llamada'
           }</p>
           </div>`,
-            text: `${nombres} ${apellidos} ${celular} ${selectedOption}`
+            text: `${nombre} ${celular} ${placa} ${selectedOption} ${dni}`
           })
         }),
         {
@@ -56,10 +57,10 @@ export default function Home() {
       if (response.ok) {
         console.log('La petición POST fue exitosa')
         // Aquí puedes realizar cualquier acción adicional después de que la petición sea exitosa
-        setNombres('')
-        setApellidos('')
+        setNombre('')
         setCelular('')
         setPlaca('')
+        setDni('')
         setIsLoading(false)
       } else {
         console.error('Error al realizar la petición POST')
@@ -152,23 +153,12 @@ export default function Home() {
               <span className="radio-label">Llamada</span>
             </span>
           </label>
-          {/*           <button
-            type="submit"
-            className="text-sm w-full md:text-lg lg:text-xl button disabled:cursor-not-allowed"
-            disabled={isLoading}
-          >
-            Contactame
-          </button> */}
         </div>
       </div>
     )
   }
 
   return (
-    /*     <main className="flex flex-col h-screen md:flex-row">
-      <section className="flex flex-1 items-center py-10 h-full bg-[#212121]">
-        <img className="" src="/img/Imagenv3.png" alt="" />
-      </section> */
     <section className="flex-1 bg-[#212121] py-10 px-4">
       <div className="flex flex-col gap-6 justify-evenly px-2 mx-auto max-w-2xl h-full md:px-10">
         <picture className="flex justify-center">
@@ -183,35 +173,23 @@ export default function Home() {
           onSubmit={handleSubmit}
           className="flex flex-col gap-10 text-white"
         >
-          <div className="container">
-            <label className="label">Nombres</label>
-            <input
-              className="input"
-              required
-              type="text"
-              name="nombres"
-              placeholder="Nombres"
-              id="nombres"
-              value={nombres}
-              onChange={(e) => setNombres(e.target.value)}
-            />
+          <div className="flex flex-col-reverse sm:flex-row gap-10 sm:gap-6">
+            <div className="container">
+              <label className="label">Nombre y Apellido</label>
+              <input
+                className="input"
+                required
+                type="text"
+                name="nombre"
+                placeholder="Nombre y Apellido"
+                id="nombre"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+              />
+            </div>
           </div>
-          <div className="container">
-            <label className="label">Apellidos</label>
-            <input
-              className="input"
-              required
-              type="text"
-              name="apellidos"
-              placeholder="Apellidos"
-              id="apellidos"
-              value={apellidos}
-              onChange={(e) => setApellidos(e.target.value)}
-            />
-          </div>
-
-          <div className="flex flex-1 flex-col gap-10 sm:gap-6 items-center sm:flex-row">
-            <div className="container flex-1">
+          <div className="flex flex-col gap-10 sm:gap-6 items-center sm:flex-row">
+            <div className="container">
               <label className=" label">Celular</label>
               <input
                 className="flex-1 input"
@@ -224,7 +202,7 @@ export default function Home() {
                 onChange={(e) => setCelular(e.target.value)}
               />
             </div>
-            <div className="container flex-1">
+            <div className="container">
               <label className=" label">Placa</label>
               <input
                 className="flex-1 input"
@@ -238,8 +216,22 @@ export default function Home() {
               />
             </div>
           </div>
-
-          <RadioButtons />
+          <div className="flex flex-col-reverse sm:flex-row-reverse gap-10 sm:gap-6">
+            <RadioButtons />
+            <div className="container">
+              <label className="label">DNI</label>
+              <input
+                className="input"
+                required
+                type="text"
+                name="dni"
+                placeholder="Dni"
+                id="dni"
+                value={dni}
+                onChange={(e) => setDni(e.target.value)}
+              />
+            </div>
+          </div>
           <button
             type="submit"
             className="text-sm md:text-lg lg:text-xl button disabled:cursor-not-allowed"
@@ -255,6 +247,5 @@ export default function Home() {
         <ToastContainer position="bottom-right" />
       </div>
     </section>
-    /*  </main> */
   )
 }
